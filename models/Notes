@@ -1,0 +1,13 @@
+todo:
+Restructure models to accommodate counties, Universities, state departments and others
+parastatal type: State department, University, County, Agency.
+Ministries should include the office of the president and deputy president.
+
+parastatal structure:
+id - autoincrement
+type: enum of State department, University, County, Agency
+Ministry: Ministry Id:
+name
+mandate
+
+also change the contacts structure to not have type.
