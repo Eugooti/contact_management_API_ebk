@@ -9,6 +9,7 @@ const create = async (model,req,res) => {
         }
 
     }catch(err){
+        console.log(err)
         return handleErrors(res,err)
     }
 }
@@ -26,7 +27,6 @@ const createMany = async (model,req,res) => {
 
 
     }catch(err){
-        console.log(err)
         return handleErrors(res,err)
     }
 }

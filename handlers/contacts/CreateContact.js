@@ -23,8 +23,8 @@ const CreateContact = async (req, res) => {
     const sequelize = contactIdModel.sequelize;
     const transaction = await sequelize.transaction();
     try {
-        const { headquarters, organizationData, address, people, Contact } = req.body;
-        const { contactType,headName } = organizationData;
+        const { headquarters, organizationData = {}, address, people, Contact } = req.body;
+        const { contactType, headName } = organizationData;
 
         // Create Contact ID
         const contactId = await contactIdModel.create({ contactType, activeState: true }, { transaction });
@@ -78,7 +78,6 @@ const CreateContact = async (req, res) => {
             } : null;
         }).filter(Boolean) : [];
 
-        console.log(contactListData)
 
         // Format address data
         const formatAddress = address?.length ? address.map(item => ({ ...item, contact_id: contactId.id })) : [];
@@ -93,7 +92,6 @@ const CreateContact = async (req, res) => {
         await transaction.commit();
         return successTransaction(res, "created");
     } catch (err) {
-        console.log(err)
         await transaction.rollback();
         return handleErrors(res, err);
     }

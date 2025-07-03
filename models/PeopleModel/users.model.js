@@ -1,6 +1,5 @@
 const sequelize = require("../../config/DB/DB.config");
 const {DataTypes} = require('sequelize')
-const {router} = require("express/lib/application");
 
 const users = sequelize.define("users", {
     id:{
@@ -26,6 +25,14 @@ const users = sequelize.define("users", {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
+    },
+    role:{
+        type: DataTypes.ENUM('ADMIN',"USER"),
+        allowNull: false
+    },
+    designation: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     password: {
         type: DataTypes.STRING,

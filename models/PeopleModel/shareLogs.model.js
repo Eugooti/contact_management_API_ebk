@@ -1,4 +1,4 @@
-const sequelize = require('../config/DB/DB.config')
+const sequelize = require('../../config/DB/DB.config')
 const {DataTypes} = require('sequelize');
 
 const shareLogs = sequelize.define('shareLogs',{

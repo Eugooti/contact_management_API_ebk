@@ -19,6 +19,7 @@ const Login = async (req,res,next) => {
                 name: user.firstName + ' ' + user.lastName,
                 email: user.email,
                 phoneNumber: user.phoneNumber,
+                role:user.role,
             }
 
             const authToken = tokens.generateAccessToken(data)

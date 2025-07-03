@@ -3,11 +3,8 @@ const users = require('./PeopleModel/users.model')
 const people = require('./PeopleModel/people.model')
 const salutation = require('./PeopleModel/Salutations.model')
 const jobs = require('./PeopleModel/personJobs.model')
-
 const contacts = require('./ContactsModel/contacts.model')
-
 const address = require('./AddressModels/address.model')
-
 const ministry = require('./Organizations/ministry.model')
 const commission = require('./Organizations/commissions.model')
 const stateDepartment = require('./Organizations/stateDepartment.model')
@@ -18,7 +15,7 @@ const presidency = require('./Organizations/presidency.model')
 const learningInstitutions = require('./Organizations/learningInstitution.model')
 const privateInstitutions = require('./Organizations/private.model')
 
-const shareLogs = require('./shareLogs.model')
+const shareLogs = require('./PeopleModel/shareLogs.model')
 
 
 const modelsSync = async () => {

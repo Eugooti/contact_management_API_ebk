@@ -9,7 +9,7 @@ const CreateUser =async (model,req,res) => {
       const password = await bcrypt.hash(email, saltRounds);
       const user = {...req.body,password}
 
-      const createUser = await model.create(user);
+      await model.create(user);
 
       if (user) {
           return  successTransaction(res,"Created")

@@ -19,6 +19,8 @@ const generateSecretKey = () => {
     return crypto.randomBytes(32).toString('hex');
 };
 
+const host = '192.168.1.155'
+
 const app = express()
 
 modelsSync().then(connection=>{
@@ -27,7 +29,7 @@ modelsSync().then(connection=>{
     }
 
     app.use(cors({
-        origin: ['http://localhost:5174','http://localhost:5173'], // Frontend URL
+        origin: ['http://localhost:5174','http://localhost:5173',`http://${host}:5173`], // Frontend URL
         methods: ['GET', 'POST', 'DELETE', 'PUT'],
         credentials: true
     }));
@@ -42,9 +44,9 @@ modelsSync().then(connection=>{
     }));
 
     app.use('/ebk',authRoutes)
-    app.use('/ebk',contactRoutes)
-    app.use('/ebk',organizationRoutes)
-    app.use('/ebk',usersRouts)
+    app.use('/ebk',authenticateToken,contactRoutes)
+    app.use('/ebk',authenticateToken,organizationRoutes)
+    app.use('/ebk',authenticateToken,usersRouts)
 
     app.use(notFound)
 
