@@ -46,7 +46,7 @@ modelsSync().then(connection=>{
     app.use('/ebk',authRoutes)
     app.use('/ebk',authenticateToken,contactRoutes)
     app.use('/ebk',authenticateToken,organizationRoutes)
-    app.use('/ebk',authenticateToken,usersRouts)
+    app.use('/ebk',usersRouts)
 
     app.use(notFound)
 
