@@ -6,3 +6,7 @@ const filteredItems = [...new Set(items)]
 // })
 
 console.log(filteredItems.length)
+
+const name = "Eugene"
+
+console.log(name[0])

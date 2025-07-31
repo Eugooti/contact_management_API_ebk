@@ -1,5 +1,6 @@
 const passportConfig = require('../../config/auth/passport.config')
 const {JwtTokens} = require("../../utils/jwtTokens");
+const {longDate} = require("../../utils/errorHandlers");
 
 const Login = async (req,res,next) => {
     try {
@@ -20,6 +21,9 @@ const Login = async (req,res,next) => {
                 email: user.email,
                 phoneNumber: user.phoneNumber,
                 role:user.role,
+                designation:user.designation,
+                initials : `${user.firstName[0]}${user.lastName[0]}`,
+                joined:longDate(user.createdAt),
             }
 
             const authToken = tokens.generateAccessToken(data)

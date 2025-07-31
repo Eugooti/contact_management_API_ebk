@@ -63,6 +63,26 @@ exports.successTransaction = (res,transaction,result=null)=>{
     })
 }
 
+exports.longDate=(inputDate)=> {
+    try {
+        // Convert to string if it's a number or Date object
+        const strDate = typeof inputDate === 'string'
+            ? inputDate
+            : inputDate instanceof Date
+                ? inputDate.toISOString()
+                : String(inputDate);
+
+        const date = new Date(strDate.replace(' ', 'T'));
+
+        if (isNaN(date)) throw new Error('Invalid date');
+
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    } catch (error) {
+        console.error('Date formatting error:', error);
+        return 'Invalid Date';
+    }
+}
 /*
   Not Found Error Handler
 
