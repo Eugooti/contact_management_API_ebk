@@ -1,6 +1,8 @@
 const Users = require('../../models/PeopleModel/users.model')
 const passport = require('passport')
-const bcrypt = require("bcrypt");
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser((user, done) => {
@@ -36,9 +38,9 @@ passport.use(
                     return done(null,false, {message: 'User not found'})
                 }
 
-                const matchPassword = await bcrypt.compare(password, user.password)
+                const passwordMatch = await  bcrypt.compare(password, user.password)
 
-                if (!matchPassword) {
+                if (!passwordMatch) {
                     return done(null, false, {message: 'Wrong username or password'})
                 }
 
