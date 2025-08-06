@@ -6,6 +6,7 @@ const {SendContact} = require("../Mail/sendContact");
 const {createContactPerson} = require("./createContactPerson");
 const {CreateContact} = require("./CreateContact");
 const {ReadOrganizationStaff} = require("./readOrganizationStaff");
+const {MailMergeList} = require("./MailMergeList");
 const CRUDContacts = (model) => {
   const methods = CRUDMethods(model)
 
@@ -36,7 +37,11 @@ const CRUDContacts = (model) => {
     }
 
     methods.readStaff = async (req,res)=>{
-    await ReadOrganizationStaff(req,res)
+        await ReadOrganizationStaff(req,res)
+    }
+
+    methods.mailMerge = async (req,res)=>{
+        await MailMergeList(req,res)
     }
 
     return methods
