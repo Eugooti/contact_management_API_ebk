@@ -57,4 +57,7 @@ router.route('/address/delete/:id').delete(catchErrors(addressController.delete)
 router.route('/organization/staff/:id').get(catchErrors(ContactController.readStaff))
 
 
+router.route('/mailMerge/list').get(catchErrors(ContactController.mailMerge))
+
+
 module.exports = router
